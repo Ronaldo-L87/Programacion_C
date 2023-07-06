@@ -1,0 +1,72 @@
+#include <gtk/gtk.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+void destroy(GtkWidget *widget, gpointer data);
+void ButtonClicked(GtkWidget *widget, gpointer data);
+void ButtonClicked2(GtkWidget *widget, gpointer data);
+
+typedef struct def_dato
+{
+  GtkWidget *entryP;
+  GtkWidget *entryA;
+  GtkWidget *label1;
+  GtkWidget *label2;
+  float peso;
+  float altura;
+  float imc;
+  char num1[15];
+  char num2[15];
+}tipo_dato;
+
+int main(int argc, char *argv[])
+{
+  GtkWidget *window;
+  GtkWidget *label1;// *label2, *label3, *label4;
+  //GtkWidget *button1, *button2;
+  GtkWidget *entry1;// *entry2;
+  GtkWidget *vbox1;
+  //tipo_dato calcular;
+  gtk_init(&argc, &argv);
+  //Ventana
+  window = gtk_window_new(GTK_WINDOW_TOPLEVEL); 
+  gtk_window_set_default_size(GTK_WINDOW(window), 350, 350);
+  gtk_signal_connect(GTK_OBJECT(window),"destroy", GTK_SIGNAL_FUNC(destroy), NULL);
+  gtk_window_set_title(GTK_WINDOW(window), " ");
+
+  //
+  vbox1 = gtk_hbox_new(TRUE,5);
+  //
+  label1 = gtk_label_new(NULL);
+  gtk_label_set_text(GTK_LABEL(label1), "Peso en kg: ");
+
+  entry1 = gtk_entry_new();
+  gtk_entry_set_editable(GTK_ENTRY(entry1), TRUE);
+  gtk_entry_set_alignment(GTK_ENTRY(entry1),0);
+  gtk_entry_set_max_length (GTK_ENTRY(entry1),10);
+  //calcular.entryP = entry1;
+
+  gtk_box_pack_start(GTK_BOX(vbox1), label1, TRUE, TRUE, 5);
+  gtk_box_pack_start(GTK_BOX(vbox1), entry1, TRUE, TRUE, 5);
+  gtk_container_add(GTK_CONTAINER(window), vbox1);
+  
+  gtk_widget_show_all(window);  
+  gtk_main();
+  
+  return 0;
+}
+
+void destroy(GtkWidget *widget, gpointer data)
+{
+  gtk_main_quit();
+}
+
+void ButtonClicked(GtkWidget *widget, gpointer data)
+{
+
+}
+
+void ButtonClicked2(GtkWidget *widget, gpointer data)
+{
+
+}
